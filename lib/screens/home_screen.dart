@@ -37,6 +37,43 @@ class _HabitHomeScreenState extends State<HabitHomeScreen> {
 
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        toolbarHeight: 75,
+        elevation: 0,
+        backgroundColor: const Color.fromARGB(154, 228, 250, 254),
+        surfaceTintColor: Colors.white,
+
+        leadingWidth: 70,
+
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 16),
+          child: Container(
+            margin: const EdgeInsets.symmetric(vertical: 12),
+            decoration: BoxDecoration(
+              color: const Color(0xFF2F54EB).withOpacity(0.12),
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: const Icon(
+              Icons.task_alt_rounded,
+              color: Color(0xFF2F54EB),
+              size: 28,
+            ),
+          ),
+        ),
+
+        title: const Text(
+          "Routinely",
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.3,
+
+            color: Color.fromARGB(255, 19, 62, 130),
+          ),
+        ),
+
+        centerTitle: false,
+      ),
       body: SafeArea(
         child: Stack(
           children: [
