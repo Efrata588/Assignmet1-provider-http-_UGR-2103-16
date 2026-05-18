@@ -51,14 +51,14 @@ lib/
 ### Home Screen
 
 ![Home Screen](./assets/screenshots/home_todaylist.png)
-![Home Screen](assets\screenshots\home_all_list.png)
-![Home Screen](assets\screenshots\catagorical_filter_spiritual.png)
-![Home Screen](assets\screenshots\catagorical_filter_study.png)
+![Home Screen](./assets/screenshots/home_all_list.png)
+![Home Screen](./assets/screenshots/catagorical_filter_spiritual.png)
+![Home Screen](./assets/screenshots/catagorical_filter_study.png)
 
 ### Add Habit
 
-![Add Habit](assets\screenshots\create_habit_page.png)
+![Add Habit](./assets/screenshots/create_habit_page.png)
 
 ### Edit Habit
 
-![Edit Habit](assets\screenshots\update_habit.png)
+![Edit Habit](./assets/screenshots/update_habit.png)
