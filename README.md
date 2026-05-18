@@ -1,17 +1,47 @@
-# habit_tracker
+# Routinely – Habit Tracker App
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+Routinely is a Flutter habit tracker application that helps users manage their daily habits.
 
-This project is a starting point for a Flutter application.
+The app allows users to:
 
-A few resources to get you started if this is your first Flutter project:
+- Add habits
+- View habits
+- Update habits
+- Delete habits
+- Mark habits as completed
+- Filter habits by category
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Technologies Used
+
+- Flutter
+- Dart
+- Provider
+- HTTP
+- MockAPI
+
+---
+
+# Features
+
+- Today's habits section
+- All habits section
+- Category filtering
+- Progress tracking
+- Clean modern UI
+- API integration with CRUD operations
+
+---
+
+# Project Structure
+
+lib/
+├── models/
+├── providers/
+├── screens/
+├── services/
+├── utils/
+└── main.dart
