@@ -16,12 +16,19 @@ class HabitHomeScreen extends StatefulWidget {
 }
 
 class _HabitHomeScreenState extends State<HabitHomeScreen> {
+  final TextEditingController _searchController = TextEditingController();
   @override
   void initState() {
     super.initState();
     Future.microtask(() {
       context.read<HabitProvider>().loadHabits();
     });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
 
   @override
@@ -68,15 +75,40 @@ class _HabitHomeScreenState extends State<HabitHomeScreen> {
                             color: Colors.grey[100],
                             borderRadius: BorderRadius.circular(15),
                           ),
-                          child: const TextField(
+                          child: TextField(
+                            controller: _searchController,
+
+                            textInputAction: TextInputAction.search,
+                            onSubmitted: (value) {
+                              context.read<HabitProvider>().searchHabits(value);
+                            },
                             decoration: InputDecoration(
-                              icon: Icon(Icons.search, color: Colors.grey),
+                              icon: const Icon(
+                                Icons.search,
+                                color: Colors.grey,
+                              ),
                               hintText: 'Search habits...',
                               border: InputBorder.none,
+                              suffixIcon: _searchController.text.isNotEmpty
+                                  ? IconButton(
+                                      icon: const Icon(
+                                        Icons.clear,
+                                        color: Colors.grey,
+                                        size: 18,
+                                      ),
+                                      onPressed: () {
+                                        _searchController.clear();
+                                        // Clear the search filter immediately on button press
+                                        context
+                                            .read<HabitProvider>()
+                                            .searchHabits('');
+                                        setState(() {});
+                                      },
+                                    )
+                                  : null,
                             ),
                           ),
                         ),
-
                         const SizedBox(height: 25),
 
                         // CATEGORY CHIPS
@@ -182,12 +214,7 @@ class _HabitHomeScreenState extends State<HabitHomeScreen> {
             MaterialPageRoute(
               builder: (context) => AddHabitScreen(
                 onCreateHabit: (newHabit) async {
-                  // This calls your provider method, which executes the API request
-                  // and appends the returned backend Habit into your reactive list.
                   await context.read<HabitProvider>().addHabit(newHabit);
-
-                  // Return an empty/dummy instance or simply return the passed habit
-                  // to fulfill the required Future<Habit> return type structure.
                   return newHabit;
                 },
               ),

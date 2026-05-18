@@ -120,9 +120,23 @@ class HabitProvider extends ChangeNotifier {
     }
   }
 
-  // EDIT
-  //
-  //
+  //search
+
+  Future<void> searchHabits(String query) async {
+    _isLoading = true;
+    notifyListeners();
+
+    try {
+      final cleanQuery = query.trim().isEmpty ? null : query.trim();
+
+      _habits = await _api.getHabits(cleanQuery);
+    } catch (e) {
+      rethrow;
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
 
   // DELETE
 
