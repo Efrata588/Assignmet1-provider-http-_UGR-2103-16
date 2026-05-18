@@ -4,6 +4,9 @@ import '../providers/habit_provider.dart';
 import '../utils/catagory.dart';
 import '../utils/utility_fun.dart';
 import '../widgets/catagory_chip.dart';
+import '../screens/edit_habit_screen.dart';
+
+import '../screens/create_habit_screen.dart';
 
 class HabitHomeScreen extends StatefulWidget {
   const HabitHomeScreen({super.key});
@@ -173,7 +176,24 @@ class _HabitHomeScreenState extends State<HabitHomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => AddHabitScreen(
+                onCreateHabit: (newHabit) async {
+                  // This calls your provider method, which executes the API request
+                  // and appends the returned backend Habit into your reactive list.
+                  await context.read<HabitProvider>().addHabit(newHabit);
+
+                  // Return an empty/dummy instance or simply return the passed habit
+                  // to fulfill the required Future<Habit> return type structure.
+                  return newHabit;
+                },
+              ),
+            ),
+          );
+        },
         backgroundColor: const Color(0xFF2F54EB),
         child: const Icon(Icons.add, color: Colors.white),
       ),
@@ -287,7 +307,23 @@ class _HabitHomeScreenState extends State<HabitHomeScreen> {
                 children: [
                   IconButton(
                     icon: Icon(Icons.edit, color: Colors.blueGrey),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EditHabitScreen(
+                            habit:
+                                habit, // Pass the habit loop context index reference directly
+                            onUpdateHabit: (updatedHabit) async {
+                              // Fires your Provider's API handling update task logic
+                              await context.read<HabitProvider>().updateHabit(
+                                updatedHabit,
+                              );
+                            },
+                          ),
+                        ),
+                      );
+                    },
                   ),
 
                   IconButton(
