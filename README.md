@@ -50,7 +50,7 @@ lib/
 
 ### Home Screen
 
-![Home Screen](assets\screenshots\home_todaylist.png)
+![Home Screen](./assets/screenshots/home_todaylist.png)
 ![Home Screen](assets\screenshots\home_all_list.png)
 ![Home Screen](assets\screenshots\catagorical_filter_spiritual.png)
 ![Home Screen](assets\screenshots\catagorical_filter_study.png)
